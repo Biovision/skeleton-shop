@@ -28,5 +28,10 @@ RSpec.describe Category, type: :model do
       category = build :category, slug: existing.slug
       expect(category).not_to be_valid
     end
+
+    it 'fails with too priority less than 1' do
+      category = build :category, priority: 0
+      expect(category).not_to be_valid
+    end
   end
 end
