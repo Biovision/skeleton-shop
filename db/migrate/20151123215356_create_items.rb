@@ -5,9 +5,11 @@ class CreateItems < ActiveRecord::Migration
       t.references :brand, index: true, foreign_key: true
       t.integer :price
       t.string :name, null: false
-      t.string :slug, null: false, index: true
+      t.string :slug, null: false
       t.string :image
       t.text :description
     end
+
+    add_index :items, :slug, unique: true
   end
 end
