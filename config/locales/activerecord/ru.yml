@@ -1,1 +1,53 @@
 ru:
+  activerecord:
+    attributes:
+      category:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        priority: "приоритет"
+        visible: "показывать"
+        brand_count: "количество брендов"
+        item_count: "количество товаров"
+        name: "название"
+        slug: "идентификатор"
+        image: "картинка"
+        description: "описание"
+      brand:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        item_count: "количество товаров"
+        name: "название"
+        slug: "идентификатор"
+        image: "картинка"
+        description: "описание"
+      item:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        brand_id: "производитель"
+        price: "цена"
+        name: "название"
+        slug: "идентификатор"
+        image: "картинка"
+        description: "описание"
+      brand_category:
+        brand_id: "производитель"
+        category_id: "категория"
+      item_category:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        item_id: "товар"
+        category_id: "категория"
+      user:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        login: "логин"
+        password: "пароль"
+        password_confirmation: "подтверждение пароля"
+        email: "email"
+      user_role:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        user_id: "пользователь"
+        role: "роль"
+        roles:
+          administrator: "администратор"
