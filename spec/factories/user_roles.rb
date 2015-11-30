@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user_role do
-    user nil
-role 1
+    user
+    role UserRole.roles[:administrator]
   end
 
 end
