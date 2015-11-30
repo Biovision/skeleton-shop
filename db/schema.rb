@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122231952) do
+ActiveRecord::Schema.define(version: 20151130143615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brand_categories", force: :cascade do |t|
+    t.integer "brand_id",    null: false
+    t.integer "category_id", null: false
+  end
+
+  add_index "brand_categories", ["brand_id"], name: "index_brand_categories_on_brand_id", using: :btree
+  add_index "brand_categories", ["category_id"], name: "index_brand_categories_on_category_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -38,4 +46,54 @@ ActiveRecord::Schema.define(version: 20151122231952) do
     t.text     "description"
   end
 
+  create_table "item_categories", force: :cascade do |t|
+    t.integer  "item_id",     null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "item_categories", ["category_id"], name: "index_item_categories_on_category_id", using: :btree
+  add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id", using: :btree
+
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "brand_id"
+    t.integer  "price"
+    t.string   "name",        null: false
+    t.string   "slug",        null: false
+    t.string   "image"
+    t.text     "description"
+  end
+
+  add_index "items", ["brand_id"], name: "index_items_on_brand_id", using: :btree
+  add_index "items", ["slug"], name: "index_items_on_slug", unique: true, using: :btree
+
+  create_table "user_roles", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "user_id"
+    t.integer  "role",       limit: 2, null: false
+  end
+
+  add_index "user_roles", ["user_id", "role"], name: "index_user_roles_on_user_id_and_role", unique: true, using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "login",           null: false
+    t.string   "password_digest", null: false
+    t.string   "email"
+  end
+
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
+
+  add_foreign_key "brand_categories", "brands"
+  add_foreign_key "brand_categories", "categories"
+  add_foreign_key "item_categories", "categories"
+  add_foreign_key "item_categories", "items"
+  add_foreign_key "items", "brands"
+  add_foreign_key "user_roles", "users"
 end

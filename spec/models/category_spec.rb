@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  it_behaves_like 'has_name_with_slug'
+  it_behaves_like 'has_name_with_unique_slug'
 
   describe 'validation' do
     it 'passes with valid attributes' do
