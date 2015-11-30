@@ -5,5 +5,7 @@ class CreateUserRoles < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.integer :role, limit: 2, null: false
     end
+
+    add_index :user_roles, [:user_id, :role], unique: true
   end
 end
