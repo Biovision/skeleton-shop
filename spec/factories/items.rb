@@ -1,11 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    brand nil
-name "MyString"
-slug "MyString"
-image "MyString"
-description "MyText"
-price 1
+    sequence(:name) { |n| "Товар #{n}" }
+    sequence(:slug) { |n| "item-#{n}" }
   end
-
 end

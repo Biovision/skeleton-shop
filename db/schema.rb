@@ -27,24 +27,29 @@ ActiveRecord::Schema.define(version: 20151130143615) do
   create_table "brands", force: :cascade do |t|
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.integer  "item_count",  limit: 2, default: 0, null: false
+    t.integer  "items_count", limit: 2, default: 0, null: false
     t.string   "name",                              null: false
     t.string   "slug",                              null: false
     t.string   "image"
     t.text     "description"
   end
 
+  add_index "brands", ["slug"], name: "index_brands_on_slug", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "priority",    limit: 2, default: 1,    null: false
     t.boolean  "visible",               default: true, null: false
+    t.integer  "brand_count", limit: 2, default: 0,    null: false
+    t.integer  "item_count",  limit: 2, default: 0,    null: false
     t.string   "name",                                 null: false
     t.string   "slug",                                 null: false
-    t.integer  "item_count",  limit: 2, default: 0,    null: false
     t.string   "image"
     t.text     "description"
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
   create_table "item_categories", force: :cascade do |t|
     t.integer  "item_id",     null: false

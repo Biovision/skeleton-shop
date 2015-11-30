@@ -1,3 +1,5 @@
 class Brand < ActiveRecord::Base
-  include HasNameWithSlug
+  include HasUniqueNameAndSlug
+
+  has_many :items, dependent: :nullify
 end

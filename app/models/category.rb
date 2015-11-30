@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  include HasNameWithSlug
+  include HasUniqueNameAndSlug
 
   validates_numericality_of :priority, greater_than: 0
 end

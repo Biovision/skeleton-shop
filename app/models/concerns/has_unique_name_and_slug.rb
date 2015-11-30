@@ -1,4 +1,4 @@
-module HasNameWithSlug
+module HasUniqueNameAndSlug
   extend ActiveSupport::Concern
 
   included do

@@ -1,3 +1,6 @@
 class Item < ActiveRecord::Base
-  belongs_to :brand
+  include HasUniqueNameAndSlug
+
+  belongs_to :brand, counter_cache: true
+  validates_numericality_of :price, greater_than: 0, allow_nil: true
 end
