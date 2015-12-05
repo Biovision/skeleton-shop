@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+  has_many :order_items, dependent: :destroy
+  has_many :items, through: :order_items
+
   enum state: [:placed, :processing, :ready, :delivered, :rejected]
 
   validates_presence_of :number
