@@ -28,8 +28,8 @@ class Order < ActiveRecord::Base
 
   def recalculate!
     attributes = { price: 0, item_count: 0 }
-    self.order_items.map do |order_item|
-      attributes[:price] += order_item.price * order_item.quantity
+    self.order_items(true).map do |order_item|
+      attributes[:price]      += order_item.price * order_item.quantity
       attributes[:item_count] += order_item.quantity
     end
     update attributes

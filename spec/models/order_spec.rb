@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Order, type: :model, focus: true do
+RSpec.describe Order, type: :model do
   describe 'new instance' do
     it 'sets code as current date' do
       order = Order.new
@@ -67,20 +67,40 @@ RSpec.describe Order, type: :model, focus: true do
     end
 
     context 'when the same item with the same price exists in order' do
+      before(:each) do
+        create :order_item, order: order, item: item, price: item.price, quantity: 1
+        order.send :recalculate!
+      end
+
       it_behaves_like 'incrementing_order_values'
 
-      it 'increments quantity'
+      it 'does not create new row in order_items' do
+        expect(action).not_to change(OrderItem, :count)
+      end
     end
 
     context 'when the same item with different price exists in order' do
+      before(:each) do
+        create :order_item, order: order, item: item, price: 40, quantity: 3
+        order.send :recalculate!
+      end
+
       it_behaves_like 'adding_new_row'
       it_behaves_like 'incrementing_order_values'
     end
   end
 
-  describe '#remove_item' do
+  describe '#remove_item', focus: true do
+
+    shared_examples 'decrementing_item_count' do
+      it 'increments item_count for order' do
+        expect(action).to change(order, :item_count).by(-4)
+      end
+    end
+
     context 'when several items with different prices exist' do
-      it 'decrements'
+      it 'decrements quantity for the lowest price'
+      it 'decrements quantity for current price in the end'
     end
   end
 end
