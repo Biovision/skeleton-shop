@@ -26,15 +26,39 @@ RSpec.describe Order, type: :model, focus: true do
     end
   end
 
+  shared_examples 'recalculating_price' do
+    it 'calls #recalculate_price'
+  end
+
   describe '#add_item' do
+    let!(:order) { create :order }
+    let!(:item) { create :item, price: 42 }
+    let(:action) { -> (quantity = 1) { order.add_item item, quantity } }
+
     shared_examples 'adding_new_row' do
-      it 'creates new row in order_items'
+      it 'creates new row in order_items' do
+        expect(action).to change(OrderItem, :count).by(1)
+      end
+
+      it 'sets quantity to argument value' do
+        action.call(2)
+        expect(OrderItem.last.quantity).to eq(2)
+      end
+
+      it 'sets price to item price' do
+        action.call
+        expect(OrderItem.last.price).to eq(item.price)
+      end
     end
 
     shared_examples 'incrementing_order_values' do
-      it 'increments item_count for order'
-      it 'adds price to order'
+      it 'increments item_count for order' do
+        expect(action).to change(order, :item_count).by(1)
+      end
 
+      it 'adds price to order' do
+        expect(action).to change(order, :price).by(42)
+      end
     end
 
     context 'when no items in order' do
