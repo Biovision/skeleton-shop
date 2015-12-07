@@ -17,6 +17,6 @@ class Category < ActiveRecord::Base
 
   # @return [Array]
   def self.entity_parameters
-    [:name, :slug, :image, :description]
+    [:visible, :priority, :name, :slug, :image, :description]
   end
 end

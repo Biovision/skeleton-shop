@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'index#index'
 
   # Administrative resources
-  resources :categories, :brands
+  resources :categories, :brands, :items
 
   # Authentication
   controller :authentications do

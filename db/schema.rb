@@ -62,12 +62,13 @@ ActiveRecord::Schema.define(version: 20151201223542) do
   add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id", using: :btree
 
   create_table "items", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "brand_id"
     t.integer  "price"
-    t.string   "name",        null: false
-    t.string   "slug",        null: false
+    t.boolean  "visible",     default: true, null: false
+    t.string   "name",                       null: false
+    t.string   "slug",                       null: false
     t.string   "image"
     t.text     "description"
   end
