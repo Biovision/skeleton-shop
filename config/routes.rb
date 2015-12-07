@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'index#index'
 
+  # Administrative resources
+  resources :categories
+
   # Authentication
   controller :authentications do
     get 'login' => :new
