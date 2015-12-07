@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   def has_role?(role)
     UserRole.user_has_role? self, role
   end
+
+  def add_role(role)
+    if UserRole.role_exists? role
+      UserRole.create user: self, role: role unless has_role? role
+    end
+  end
 end

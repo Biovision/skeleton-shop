@@ -1,1 +1,6 @@
 ru:
+  categories:
+    update:
+      success: "Категория успешно изменена"
+    delete:
+      success: "Категория успешно удалена"

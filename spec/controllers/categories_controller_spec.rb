@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CategoriesController, type: :controller, focus: true do
+RSpec.describe CategoriesController, type: :controller do
   let(:user) { create :administrator }
   let!(:entity) { create :category }
 
@@ -90,7 +90,7 @@ RSpec.describe CategoriesController, type: :controller, focus: true do
     it_behaves_like 'entity_assigner'
 
     it 'updates category' do
-      category.reload
+      entity.reload
       expect(entity.name).to eq('new value')
     end
 
