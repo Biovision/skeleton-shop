@@ -116,5 +116,4 @@ RSpec.describe CategoriesController, type: :controller do
       expect(action).to change(Category, :count).by(-1)
     end
   end
-
 end
