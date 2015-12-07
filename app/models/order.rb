@@ -17,6 +17,14 @@ class Order < ActiveRecord::Base
     recalculate!
   end
 
+  def remove_item(item)
+    order_item = self.order_items.where(item: item).order('price asc').first
+    if order_item.is_a? OrderItem
+      order_item.remove 1
+      recalculate!
+    end
+  end
+
   private
 
   def generate_number

@@ -26,10 +26,6 @@ RSpec.describe Order, type: :model do
     end
   end
 
-  shared_examples 'recalculating_price' do
-    it 'calls #recalculate_price'
-  end
-
   describe '#add_item' do
     let!(:order) { create :order }
     let!(:item) { create :item, price: 42 }
@@ -90,17 +86,54 @@ RSpec.describe Order, type: :model do
     end
   end
 
-  describe '#remove_item', focus: true do
+  describe '#remove_item' do
+    let!(:order) { create :order }
+    let!(:item) { create :item, price: 16 }
+    let(:action) { -> { order.remove_item item } }
 
     shared_examples 'decrementing_item_count' do
       it 'increments item_count for order' do
-        expect(action).to change(order, :item_count).by(-4)
+        expect(action).to change(order, :item_count).by(-1)
       end
     end
 
     context 'when several items with different prices exist' do
-      it 'decrements quantity for the lowest price'
-      it 'decrements quantity for current price in the end'
+      before :each do
+        @cheaper = create :order_item, order: order, item: item, price: 8, quantity: 2
+        @current = create :order_item, order: order, item: item, price: item.price
+        order.send :recalculate!
+      end
+
+      it_behaves_like 'decrementing_item_count'
+
+      it 'decrements quantity for the lowest price' do
+        action.call
+        @cheaper.reload
+        expect(@cheaper.quantity).to eq(1)
+      end
+
+      it 'decrements quantity for current price in the end' do
+        action.call
+        @current.reload
+        expect(@current.quantity).to eq(1)
+      end
+
+      it 'decrements total price' do
+        expect(action).to change(order, :price).by(-8)
+      end
+    end
+
+    context 'when item price does not differ' do
+      before :each do
+        create :order_item, order: order, item: item, price: item.price
+        order.send :recalculate!
+      end
+
+      it_behaves_like 'decrementing_item_count'
+
+      it 'decrements total price' do
+        expect(action).to change(order, :price).by(-item.price)
+      end
     end
   end
 end
