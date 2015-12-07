@@ -29,4 +29,25 @@ class ApplicationController < ActionController::Base
   def param_from_request(parameter)
     params[parameter].to_s.encode('UTF-8', 'UTF-8', invalid: :replace, replace: '')
   end
+
+  protected
+
+  # Wrapper for 'Record not found' exception
+  #
+  # @return [ActiveRecord::RecordNotFound]
+  def record_not_found
+    ActiveRecord::RecordNotFound
+  end
+
+  def restrict_anonymous_access
+    redirect_to login_path, alert: t(:please_log_in) unless current_user.is_a? User
+  end
+
+  def require_role(role)
+    if current_user.is_a? User
+      redirect_to root_path, alert: t(:insufficient_role) unless current_user.has_role? role
+    else
+      redirect_to login_path, alert: t(:please_log_in)
+    end
+  end
 end

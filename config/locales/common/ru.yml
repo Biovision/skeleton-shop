@@ -1,2 +1,4 @@
 ru:
   invalid_credentials: "Неправильный логин или пароль"
+  please_log_in: "Авторизуйтесь, пожалуйста"
+  insufficient_role: "Не хватает прав"

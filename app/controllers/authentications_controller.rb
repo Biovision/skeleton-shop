@@ -33,7 +33,7 @@ class AuthenticationsController < ApplicationController
   end
 
   def invalid_credentials
-    flash.now[:warning] = t(:invalid_credentials)
+    flash.now[:alert] = t(:invalid_credentials)
     render :new
   end
 end
