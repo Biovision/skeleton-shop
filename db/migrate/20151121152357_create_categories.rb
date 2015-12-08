@@ -2,6 +2,7 @@ class CreateCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
       t.timestamps null: false
+      t.integer :parent_id
       t.integer :priority, limit: 2, null: false, default: 1
       t.boolean :visible, null: false, default: true
       t.integer :brand_count, limit: 2, null: false, default: 0

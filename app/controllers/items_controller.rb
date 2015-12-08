@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   def create
     @entity = Item.new entity_parameters
     if @entity.save
+      set_categories
       redirect_to @entity
     else
       render :new
@@ -27,6 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @entity.update entity_parameters
+      set_categories
       redirect_to @entity, notice: t('items.update.success')
     else
       render :edit
@@ -52,5 +54,9 @@ class ItemsController < ApplicationController
 
   def entity_parameters
     params.require(:item).permit(Item.entity_parameters)
+  end
+
+  def set_categories
+    @entity.category_ids = params[:category_ids].to_a
   end
 end

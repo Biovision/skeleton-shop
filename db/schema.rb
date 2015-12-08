@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151201223542) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "parent_id"
     t.integer  "priority",    limit: 2, default: 1,    null: false
     t.boolean  "visible",               default: true, null: false
     t.integer  "brand_count", limit: 2, default: 0,    null: false

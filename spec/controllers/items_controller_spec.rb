@@ -40,10 +40,14 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   describe 'post create' do
-    let(:action) { -> { post :create, item: attributes_for(:item) } }
+    let(:category) { create :category }
+    let(:action) { -> { post :create, item: attributes_for(:item), category_ids: [category.id.to_s] } }
 
     context 'authorization and redirects' do
-      before(:each) { action.call }
+      before(:each) do
+        allow_any_instance_of(Item).to receive(:category_ids=)
+        action.call
+      end
 
       it_behaves_like 'page_for_administrator'
 
@@ -55,6 +59,11 @@ RSpec.describe ItemsController, type: :controller do
     context 'database change' do
       it 'inserts row into items table' do
         expect(action).to change(Item, :count).by(1)
+      end
+
+      it 'sets category ids for new item' do
+        expect_any_instance_of(Item).to receive(:category_ids=).with([category.id.to_s])
+        action.call
       end
     end
   end
@@ -82,8 +91,11 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   describe 'patch update' do
+    let(:category) { create :category }
+
     before(:each) do
-      patch :update, id: entity, item: { name: 'new value' }
+      allow(controller).to receive(:set_categories)
+      patch :update, id: entity, item: { name: 'new value' }, category_ids: [category.id.to_s]
     end
 
     it_behaves_like 'page_for_administrator'
@@ -96,6 +108,10 @@ RSpec.describe ItemsController, type: :controller do
 
     it 'redirects to item page' do
       expect(response).to redirect_to(entity)
+    end
+
+    it 'sets categories' do
+      expect(controller).to have_received(:set_categories)
     end
   end
 

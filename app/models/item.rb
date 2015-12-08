@@ -18,4 +18,9 @@ class Item < ActiveRecord::Base
   def self.entity_parameters
     [:brand_id, :price, :visible, :name, :slug, :image, :description]
   end
+
+  # @param [Array] category_ids
+  def category_ids=(category_ids)
+    self.categories = Category.where id: category_ids
+  end
 end

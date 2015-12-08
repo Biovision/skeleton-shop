@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
   include HasUniqueNameAndSlug
 
+  belongs_to :parent, class_name: Category.to_s
+  has_many :categories, foreign_key: :parent_id, dependent: :nullify
   has_many :brand_categories, dependent: :destroy
   has_many :item_categories, dependent: :destroy
   has_many :brands, through: :brand_categories
@@ -17,6 +19,6 @@ class Category < ActiveRecord::Base
 
   # @return [Array]
   def self.entity_parameters
-    [:visible, :priority, :name, :slug, :image, :description]
+    [:parent_id, :visible, :priority, :name, :slug, :image, :description]
   end
 end
