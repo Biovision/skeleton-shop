@@ -17,3 +17,5 @@ ru:
   carts:
     destroy:
       success: "Корзина опустошена"
+    update:
+      success: "Заказ успешно размещён"

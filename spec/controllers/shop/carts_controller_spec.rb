@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Shop::CartsController, type: :controller, focus: true do
+RSpec.describe Shop::CartsController, type: :controller do
   context 'when session[:order_id] is not set' do
     before(:each) { session[:order_id] = nil }
 
@@ -32,7 +32,10 @@ RSpec.describe Shop::CartsController, type: :controller, focus: true do
 
       it_behaves_like 'creating_new_order'
 
-      it 'redirects to cart'
+      it 'redirects to cart' do
+        action.call
+        expect(response).to redirect_to(shop_cart_path)
+      end
     end
 
     describe 'delete destroy' do
@@ -82,10 +85,25 @@ RSpec.describe Shop::CartsController, type: :controller, focus: true do
 
       it_behaves_like 'order_assigner'
 
-      it 'updates order parameters'
-      it 'changes order status'
-      it 'removes order_id from session'
-      it 'redirects to root'
+      it 'updates order parameters' do
+        order.reload
+        expect(order.name).to eq('Client')
+        expect(order.phone).to eq('000-00-00')
+        expect(order.email).to eq('client@example.com')
+      end
+
+      it 'changes order state to "placed"' do
+        order.reload
+        expect(order).to be_placed
+      end
+
+      it 'removes order_id from session' do
+        expect(session[:order_id]).to be_nil
+      end
+
+      it 'redirects to root' do
+        expect(response).to redirect_to(root_path)
+      end
     end
 
     describe 'delete destroy' do
