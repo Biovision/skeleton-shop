@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   # Administrative resources
   resources :categories, :brands, :items
 
+  namespace :shop do
+    resource :cart do
+      # Add or remove item from cart
+      resources :items, only: [:create, :destroy]
+    end
+  end
+
   # Authentication
   controller :authentications do
     get 'login' => :new
