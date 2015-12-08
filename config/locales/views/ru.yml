@@ -14,3 +14,6 @@ ru:
       success: "Товар успешно изменён"
     delete:
       success: "Товар успешно удалён"
+  carts:
+    destroy:
+      success: "Корзина опустошена"

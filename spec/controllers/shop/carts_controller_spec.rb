@@ -5,8 +5,14 @@ RSpec.describe Shop::CartsController, type: :controller, focus: true do
     before(:each) { session[:order_id] = nil }
 
     shared_examples 'creating_new_order' do
-      it 'creates new order in database'
-      it 'stores order id in session'
+      it 'creates new order in database' do
+        expect(action).to change(Order, :count).by(1)
+      end
+
+      it 'stores order id in session' do
+        action.call
+        expect(session[:order_id]).to eq(Order.last.id)
+      end
     end
 
     describe 'get show' do
@@ -32,14 +38,24 @@ RSpec.describe Shop::CartsController, type: :controller, focus: true do
     describe 'delete destroy' do
       let(:action) { -> { delete :destroy } }
 
-      it 'does not add new order'
-      it 'does not set order_id in session'
-      it 'redirects to root'
+      it 'does not add new order' do
+        expect(action).not_to change(Order, :count)
+      end
+
+      it 'does not set order_id in session' do
+        action.call
+        expect(session[:order_id]).to be_nil
+      end
+
+      it 'redirects to root' do
+        action.call
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 
   context 'when session[:order_id] is set' do
-    let(:order) { create :order }
+    let!(:order) { create :order }
 
     before(:each) { session[:order_id] = order.id }
 
@@ -77,9 +93,18 @@ RSpec.describe Shop::CartsController, type: :controller, focus: true do
 
       it_behaves_like 'order_assigner'
 
-      it 'changes order status to :rejected'
-      it 'removes order_id from session'
-      it 'redirects to root'
+      it 'changes order state to :rejected' do
+        order.reload
+        expect(order).to be_rejected
+      end
+
+      it 'removes order_id from session' do
+        expect(session[:order_id]).to be_nil
+      end
+
+      it 'redirects to root' do
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 end

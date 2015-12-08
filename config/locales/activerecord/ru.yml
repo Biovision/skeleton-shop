@@ -51,3 +51,22 @@ ru:
         role: "роль"
         roles:
           administrator: "администратор"
+      order:
+        created_at: "время создания"
+        updated_at: "время изменения"
+        number: "номер"
+        price: "цена"
+        item_count: "количество товаров"
+        state: "состояние"
+        name: "контактное лицо"
+        phone: "контактный телефон"
+        email: "контактная электронная почта"
+        address: "адрес доставки"
+        comment: "комментарий к заказу"
+        states:
+          incomplete: "набирается"
+          placed: "размещён"
+          processing: "обрабатывается"
+          ready: "готов к отправке"
+          delivered: "доставлен"
+          rejected: "удалён"
