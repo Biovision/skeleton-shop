@@ -7,6 +7,12 @@ class Order < ActiveRecord::Base
   validates_presence_of :number
   after_initialize :generate_number
 
+  PER_PAGE = 20
+
+  def self.page_for_administrator(page)
+    order('id desc').page(page).per(PER_PAGE)
+  end
+
   # Add item to order
   #
   # Increments value of quantity in OrderItem for this order.

@@ -19,3 +19,8 @@ ru:
       success: "Корзина опустошена"
     update:
       success: "Заказ успешно размещён"
+  orders:
+    update:
+      success: "Заказ успешно изменён"
+    delete:
+      success: "Заказ успешно удалён"
