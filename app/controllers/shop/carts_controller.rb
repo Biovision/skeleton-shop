@@ -1,4 +1,6 @@
 class Shop::CartsController < ApplicationController
+  include OrderSession
+
   before_action :set_order
 
   def show
@@ -27,19 +29,6 @@ class Shop::CartsController < ApplicationController
   end
 
   private
-
-  def set_order
-    if session[:order_id]
-      @order = Order.find_by id: session[:order_id]
-    else
-      @order = nil
-    end
-  end
-
-  def create_order
-    @order = Order.create
-    session[:order_id] = @order.id
-  end
 
   def order_parameters
     params.require(:order).permit(:name, :phone, :email, :address, :comment)

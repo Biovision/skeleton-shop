@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Shop::ItemsController, type: :controller, focus: true do
-  let!(:item) { create :item }
+RSpec.describe Shop::ItemsController, type: :controller do
+  let!(:item) { create :item_with_price }
 
   shared_examples 'redirect_to_item' do
     it 'redirects to item page' do
@@ -52,6 +52,7 @@ RSpec.describe Shop::ItemsController, type: :controller, focus: true do
 
   context 'when order_id is set in session' do
     let(:order) { create :order }
+    before(:each) { session[:order_id] = order.id }
 
     shared_examples 'not_creating_order' do
       it 'does not create new order' do
