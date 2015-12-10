@@ -24,3 +24,10 @@ ru:
       success: "Заказ успешно изменён"
     delete:
       success: "Заказ успешно удалён"
+  flash_messages:
+    notice: "Замечание"
+    warning: "Предупреждение"
+    error: "Ошибка"
+  index:
+    index:
+      title: "Интернет-магазин"
