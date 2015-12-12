@@ -1,0 +1,13 @@
+<%= form_tag login_path, method: :post do %>
+    <div>
+      <%= label_tag :login, t('.login') %>
+      <%= text_field_tag :login %>
+    </div>
+    <div>
+      <%= label_tag :password, t('.password') %>
+      <%= password_field_tag :password %>
+    </div>
+    <div>
+      <%= button_tag t('.enter'), type: :submit %>
+    </div>
+<% end %>

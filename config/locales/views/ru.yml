@@ -31,3 +31,13 @@ ru:
   index:
     index:
       title: "Интернет-магазин"
+  authentications:
+    new:
+      title: "Вход на сайт"
+    form:
+      login: "логин"
+      password: "пароль"
+      enter: "Войти"
+  layouts:
+    main_navigation:
+      logout: "Выйти"

@@ -1,5 +1,8 @@
 <nav class="main">
   <ul>
     <li>About</li>
+    <% if current_user.is_a? User %>
+        <li><%= link_to t('.logout'), logout_path, method: :delete %></li>
+    <% end %>
   </ul>
 </nav>
