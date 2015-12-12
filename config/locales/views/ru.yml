@@ -41,3 +41,6 @@ ru:
   layouts:
     main_navigation:
       logout: "Выйти"
+  admin:
+    index:
+      title: "Администрирование"

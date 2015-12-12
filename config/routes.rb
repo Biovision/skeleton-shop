@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'index#index'
 
+  get 'admin' => 'admin#index'
+  
   # Administrative resources
   resources :categories, :brands, :items
   # Administrators can only edit and delete existing orders
