@@ -4,16 +4,25 @@ ru:
       success: "Категория успешно изменена"
     delete:
       success: "Категория успешно удалена"
+    index:
+      title: "Категории, страница %{page}"
+      header: "Категории"
   brands:
     update:
       success: "Производитель успешно изменён"
     delete:
       success: "Производитель успешно удалён"
+    index:
+      title: "Производители, страница %{page}"
+      header: "Производители"
   items:
     update:
       success: "Товар успешно изменён"
     delete:
       success: "Товар успешно удалён"
+    index:
+      title: "Товары, страница %{page}"
+      header: "Товары"
   carts:
     destroy:
       success: "Корзина опустошена"
@@ -24,6 +33,9 @@ ru:
       success: "Заказ успешно изменён"
     delete:
       success: "Заказ успешно удалён"
+    index:
+      title: "Заказы, страница %{page}"
+      header: "Заказы"
   flash_messages:
     notice: "Замечание"
     warning: "Предупреждение"
