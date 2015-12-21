@@ -1,5 +1,7 @@
 <header>
-  <div class="logo"><%= link_to 'home', root_path %></div>
-  <%= render 'shop/carts/cart' %>
+  <div class="logo-and-cart">
+    <div class="logo"><%= link_to 'home', root_path %></div>
+    <%= render 'shop/carts/cart' %>
+  </div>
   <%= render 'layouts/main_navigation' %>
 </header>

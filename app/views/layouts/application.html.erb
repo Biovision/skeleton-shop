@@ -12,8 +12,11 @@
 <%= render 'layouts/header' %>
 <div id="main">
   <%= render 'categories/menu' %>
-  <%= render 'shared/flash_messages' %>
-  <%= yield %>
+  <div class="content">
+    <%= render 'shared/flash_messages' %>
+    <%= render 'shared/options' %>
+    <%= yield %>
+  </div>
 </div>
 <%= render 'layouts/footer' %>
 </body>
