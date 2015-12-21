@@ -1,0 +1,25 @@
+<%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
+
+<%= form_for entity do |f| %>
+    <%= render partial: 'shared/entity_image', locals: { entity: entity } %>
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image, accept: 'image/jpeg, image/png' %>
+    </div>
+    <div>
+      <div><%= f.label :name %></div>
+      <%= f.text_field :name, required: true, size: 50, maxlength: 50 %>
+    </div>
+    <div>
+      <div><%= f.label :slug %></div>
+      <%= f.text_field :slug, required: true, size: 50, maxlength: 50 %>
+    </div>
+    <div>
+      <div><%= f.label :description %></div>
+      <%= f.text_area :description, cols: 50, rows: 5 %>
+    </div>
+
+    <div>
+      <%= f.button t(:submit), type: :submit %>
+    </div>
+<% end %>

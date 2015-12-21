@@ -1,0 +1,29 @@
+<article class="brand">
+  <h1><%= brand.name %></h1>
+  <%= render partial: 'shared/entity_image', locals: { entity: brand } %>
+  <table>
+    <caption><%= brand.slug %></caption>
+    <tbody>
+    <tr>
+      <th><%= t(:created_at) %></th>
+      <td><%= time_tag brand.created_at %></td>
+    </tr>
+    <tr>
+      <th><%= t(:updated_at) %></th>
+      <td><%= time_tag brand.updated_at %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.brand.items_count') %></th>
+      <td><%= brand.items_count %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <% unless brand.description.blank? %>
+      <section class="description">
+        <h1><%= t('activerecord.attributes.brand.description') %></h1>
+
+        <div><%= simple_format brand.description %></div>
+      </section>
+  <% end %>
+</article>
