@@ -9,6 +9,8 @@ ru:
       header: "Категории"
     new:
       title: "Создать категорию товара"
+    show:
+      title: "Категория товаров «%{name}»"
   brands:
     update:
       success: "Производитель успешно изменён"

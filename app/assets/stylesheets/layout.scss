@@ -31,13 +31,34 @@ body {
   }
 }
 
+h1:first-letter {
+  text-transform: uppercase;
+}
+
 #main {
   outline: solid lime 1px;
   display: flex;
   flex-wrap: wrap;
 
-  .content {
-    width: calc(100% - 15rem);
+  div.content {
+    min-width: 20rem;
+  }
+}
+
+form {
+  margin: 0;
+  padding: 0;
+
+  label {
+    display: inline-block;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  input, textarea {
+    max-width: calc(100% - 1rem);
   }
 }
 

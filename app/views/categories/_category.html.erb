@@ -1,0 +1,35 @@
+<article class="category">
+  <h1><%= category.name %></h1>
+  <%= render partial: 'shared/entity_image', locals: { entity: category } %>
+  <table>
+    <caption><%= category.slug %></caption>
+    <tbody>
+    <tr>
+      <th><%= t(:created_at) %></th>
+      <td><%= time_tag category.created_at %></td>
+    </tr>
+    <tr>
+      <th><%= t(:updated_at) %></th>
+      <td><%= time_tag category.updated_at %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.category.visible') %>?</th>
+      <td><%= category.visible? ? t(:yes) : t(:no) %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.category.item_count') %></th>
+      <td><%= category.item_count %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.category.brand_count') %></th>
+      <td><%= category.brand_count %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <section class="description">
+    <h1><%= t('activerecord.attributes.category.description') %></h1>
+
+    <div><%= simple_format category.description %></div>
+  </section>
+</article>
