@@ -8,6 +8,8 @@ class Category < ActiveRecord::Base
   has_many :brands, through: :brand_categories
   has_many :items, through: :item_categories
 
+  mount_uploader :image, ImageUploader
+
   validates_numericality_of :priority, greater_than: 0
 
   PER_PAGE = 25

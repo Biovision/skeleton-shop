@@ -5,6 +5,8 @@ class Brand < ActiveRecord::Base
   has_many :brand_categories, dependent: :destroy
   has_many :categories, through: :brand_categories
 
+  mount_uploader :image, ImageUploader
+
   PER_PAGE = 25
 
   def self.page_for_administrator(page)

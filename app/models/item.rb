@@ -7,6 +7,8 @@ class Item < ActiveRecord::Base
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
 
+  mount_uploader :image, ImageUploader
+
   validates_numericality_of :price, greater_than: 0, allow_nil: true
 
   PER_PAGE = 25
