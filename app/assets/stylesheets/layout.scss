@@ -3,3 +3,27 @@ html {
   padding: 0;
   font-size: 16px;
 }
+
+div.notice {
+  background: #eeffee image_url('icons/notice.png') no-repeat 0.5rem 0.5rem / 2rem 2rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: #004000;
+  border: dashed #ddeedd 1px;
+  margin: 0 0 0.5rem 0;
+}
+
+div.warning {
+  background: #ffffee image_url('icons/warning.png') no-repeat 0.5rem 0.5rem / 2rem 2rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: #404000;
+  border: dashed #eeeedd 1px;
+  margin: 0 0 0.5rem 0;
+}
+
+div.alert {
+  background: #ffeeee image_url('icons/alert.png') no-repeat 0.5rem 0.5rem / 2rem 2rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: #400000;
+  border: dashed #eedddd 1px;
+  margin: 0 0 0.5rem 0;
+}
