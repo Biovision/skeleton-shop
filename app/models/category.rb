@@ -12,6 +12,9 @@ class Category < ActiveRecord::Base
 
   validates_numericality_of :priority, greater_than: 0
 
+  scope :visible, -> { where visible: true }
+  scope :ordered_by_priority, -> { order 'priority asc' }
+
   PER_PAGE = 25
 
   # @param [Integer] page

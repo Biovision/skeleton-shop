@@ -27,9 +27,11 @@
     </tbody>
   </table>
 
-  <section class="description">
-    <h1><%= t('activerecord.attributes.category.description') %></h1>
+  <% unless category.description.blank? %>
+      <section class="description">
+        <h1><%= t('activerecord.attributes.category.description') %></h1>
 
-    <div><%= simple_format category.description %></div>
-  </section>
+        <div><%= simple_format category.description %></div>
+      </section>
+  <% end %>
 </article>

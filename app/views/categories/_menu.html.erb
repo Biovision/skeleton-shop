@@ -1,5 +1,9 @@
 <div class="categories">
   <nav>
-    Categories
+    <ul>
+      <% Category.visible.ordered_by_priority.each do |category| %>
+          <li><%= link_to category.name, category %></li>
+      <% end %>
+    </ul>
   </nav>
 </div>
