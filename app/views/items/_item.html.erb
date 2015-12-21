@@ -20,6 +20,14 @@
       <th><%= t('activerecord.attributes.item.brand_id') %></th>
       <td><%= item.brand_id.blank? ? t(:not_selected) : link_to(item.brand.name, item.brand) %></td>
     </tr>
+    <tr>
+      <th><%= t('items.form.categories') %></th>
+      <td>
+        <% item.categories.ordered_by_name.each do |category| %>
+        <div><%= link_to category.name, category %></div>
+        <% end %>
+      </td>
+    </tr>
     </tbody>
   </table>
 

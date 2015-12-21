@@ -31,6 +31,12 @@
       <%= f.text_area :description, cols: 50, rows: 5 %>
     </div>
 
+    <fieldset>
+      <legend><%= t('.categories') %></legend>
+
+      <%= render partial: 'categories_for_select', locals: { categories: Category.level(nil), item: entity } %>
+    </fieldset>
+
     <div>
       <%= f.button t(:submit), type: :submit %>
     </div>

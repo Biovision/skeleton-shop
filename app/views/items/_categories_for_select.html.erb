@@ -1,0 +1,11 @@
+<% if categories.any? %>
+    <ul>
+      <% categories.each do |category| %>
+      <li>
+        <%= check_box_tag 'category_ids[]', category.id, category.has_item?(item), id: "category_id_#{category.id}" %>
+        <%= label_tag "category_id_#{category.id}", category.name %>
+        <%= render partial: 'items/categories_for_select', locals: { categories: Category.level(category.id), item: item } %>
+      </li>
+      <% end %>
+    </ul>
+<% end %>

@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
 
   validates_numericality_of :priority, greater_than: 0
 
-  scope :visible, -> { where visible: true }
+  scope :visible, -> (visible = true) { where visible: true unless visible.nil? }
   scope :ordered_by_priority, -> { order 'priority asc' }
 
   PER_PAGE = 25
@@ -22,8 +22,16 @@ class Category < ActiveRecord::Base
     ordered_by_name.page(page).per(PER_PAGE)
   end
 
+  def self.level(parent_id, visible = nil)
+    where(parent_id: parent_id).visible(visible).ordered_by_priority
+  end
+
   # @return [Array]
   def self.entity_parameters
     [:parent_id, :visible, :priority, :name, :slug, :image, :description]
+  end
+
+  def has_item?(item)
+    self.items.include? item
   end
 end

@@ -41,6 +41,8 @@ ru:
       title: "Редактирование товара"
     show:
       title: "Товар «%{name}»"
+    form:
+      categories: "Категории"
   carts:
     destroy:
       success: "Корзина опустошена"
@@ -54,10 +56,11 @@ ru:
     index:
       title: "Заказы, страница %{page}"
       header: "Заказы"
-  flash_messages:
-    notice: "Замечание"
-    warning: "Предупреждение"
-    error: "Ошибка"
+  shared:
+    flash_messages:
+      notice: "Замечание"
+      warning: "Предупреждение"
+      error: "Ошибка"
   index:
     index:
       title: "Интернет-магазин"
