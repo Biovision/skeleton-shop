@@ -1,11 +1,4 @@
 div.categories {
-  outline: solid red 1px;
   min-width: 12rem;
   max-width: 15rem;
-}
-
-article.category {
-  th:first-letter {
-    text-transform: uppercase;
-  }
 }

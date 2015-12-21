@@ -35,6 +35,12 @@ ru:
     index:
       title: "Товары, страница %{page}"
       header: "Товары"
+    new:
+      title: "Добавление товара"
+    edit:
+      title: "Редактирование товара"
+    show:
+      title: "Товар «%{name}»"
   carts:
     destroy:
       success: "Корзина опустошена"

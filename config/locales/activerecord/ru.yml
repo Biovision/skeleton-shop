@@ -29,6 +29,7 @@ ru:
         name: "название"
         slug: "идентификатор"
         image: "картинка"
+        visible: "показывать"
         description: "описание"
       brand_category:
         brand_id: "производитель"

@@ -1,0 +1,33 @@
+<article class="item">
+  <h1><%= item.name %></h1>
+  <%= render partial: 'shared/entity_image', locals: { entity: item } %>
+  <table>
+    <caption><%= item.slug %></caption>
+    <tbody>
+    <tr>
+      <th><%= t(:created_at) %></th>
+      <td><%= time_tag item.created_at %></td>
+    </tr>
+    <tr>
+      <th><%= t(:updated_at) %></th>
+      <td><%= time_tag item.updated_at %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.item.visible') %>?</th>
+      <td><%= item.visible? ? t(:yes) : t(:no) %></td>
+    </tr>
+    <tr>
+      <th><%= t('activerecord.attributes.item.brand_id') %></th>
+      <td><%= item.brand_id.blank? ? t(:not_selected) : link_to(item.brand.name, item.brand) %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <% unless item.description.blank? %>
+      <section class="description">
+        <h1><%= t('activerecord.attributes.item.description') %></h1>
+
+        <div><%= simple_format item.description %></div>
+      </section>
+  <% end %>
+</article>
