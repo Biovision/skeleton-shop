@@ -4,6 +4,7 @@ ru:
       category:
         created_at: "время создания"
         updated_at: "время изменения"
+        parent_id: "родительская категория"
         priority: "приоритет"
         visible: "показывать"
         brand_count: "количество брендов"
