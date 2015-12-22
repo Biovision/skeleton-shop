@@ -1,9 +1,5 @@
 <div class="categories">
   <nav>
-    <ul>
-      <% Category.visible.ordered_by_priority.each do |category| %>
-          <li><%= link_to category.name, category %></li>
-      <% end %>
-    </ul>
+    <%= render partial: 'categories/tree', locals: { categories: Category.level(nil, true) } %>
   </nav>
 </div>

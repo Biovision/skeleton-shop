@@ -1,0 +1,12 @@
+<% if categories.any? %>
+    <ul>
+      <% categories.each do |category| %>
+          <li>
+            <%= link_to category.name, category %>
+            <% if categori.parent_id.nil? %>
+                <%= render partial: 'categories/tree', locals: { categories: Category.level(category.id, true) } %>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+<% end %>
