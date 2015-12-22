@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       # Add or remove item from cart
       resources :items, only: [:create, :destroy]
     end
+
+    resources :categories, only: [:index, :show]
   end
 
   # Authentication
