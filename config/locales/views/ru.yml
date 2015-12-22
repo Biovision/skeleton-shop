@@ -13,6 +13,8 @@ ru:
       title: "Категория товаров «%{name}»"
     edit:
       title: "Редактирование категории"
+    menu:
+      categories: "Категории"
   brands:
     update:
       success: "Производитель успешно изменён"

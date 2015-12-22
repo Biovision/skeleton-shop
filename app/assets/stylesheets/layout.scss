@@ -5,7 +5,11 @@ html {
 }
 
 body {
+  outline: solid gold 1px;
   min-width: 20rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0;
 
   > header {
     .logo-and-cart {
@@ -31,12 +35,20 @@ body {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
 h1:first-letter {
   text-transform: uppercase;
 }
 
+a:link, a:visited {
+  color: #214a92;
+}
+
 #main {
-  outline: solid lime 1px;
   display: flex;
   flex-wrap: wrap;
 

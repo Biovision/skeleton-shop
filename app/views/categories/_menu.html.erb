@@ -1,5 +1,6 @@
 <div class="categories">
   <nav>
+    <div class="header"><%= t('.categories') %></div>
     <%= render partial: 'categories/tree', locals: { categories: Category.level(nil, true) } %>
   </nav>
 </div>

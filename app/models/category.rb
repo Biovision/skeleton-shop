@@ -11,6 +11,7 @@ class Category < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   validates_numericality_of :priority, greater_than: 0
+  after_initialize :set_next_priority
 
   scope :visible, -> (visible = true) { where visible: true unless visible.nil? }
   scope :ordered_by_priority, -> { order 'priority asc' }
@@ -33,5 +34,13 @@ class Category < ActiveRecord::Base
 
   def has_item?(item)
     self.items.include? item
+  end
+
+  private
+
+  def set_next_priority
+    if id.nil?
+      self.priority = Category.where(parent_id: self.parent_id).maximum(:priority).to_i + 1
+    end
   end
 end
