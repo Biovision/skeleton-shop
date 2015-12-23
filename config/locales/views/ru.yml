@@ -83,3 +83,7 @@ ru:
     categories:
       index:
         title: "Категории товаров"
+    items:
+      index:
+        title: "Все товары, страница %{page}"
+        header: "Все товары"

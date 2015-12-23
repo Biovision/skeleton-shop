@@ -14,3 +14,50 @@ article.edit-item {
     }
   }
 }
+
+ul.items-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 33%;
+  }
+}
+
+.item-preview {
+  margin: 0.25rem;
+  padding: 0.5rem;
+  background: #F7F7F7;
+
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 13rem;
+  }
+
+  .info {
+    .name {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+
+@media screen and(max-width: 930px) {
+  ul.items-list > li {
+    width: 50%;
+  }
+}
+
+@media screen and(max-width: 690px) {
+  ul.items-list > li {
+    width: 100%;
+  }
+}
+
