@@ -44,6 +44,25 @@ ul.items-list {
   .info {
     .name {
       font-size: 1.25rem;
+      font-family: 'PT Serif', serif;
+      font-weight: bold;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.5rem;
+
+      &:after {
+        content: ' ₽';
+      }
+    }
+
+    .cart-control {
+      button {
+        width: 100%;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
     }
   }
 }

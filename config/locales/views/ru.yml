@@ -87,3 +87,5 @@ ru:
       index:
         title: "Все товары, страница %{page}"
         header: "Все товары"
+      preview:
+        add_to_cart: "Добавить в корзину"

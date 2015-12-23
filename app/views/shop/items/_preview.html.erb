@@ -4,5 +4,10 @@
   </div>
   <div class="info">
     <div class="name"><%= link_to_shop_item item %></div>
+    <div class="brand"><%= item.brand_name %></div>
+    <div class="price"><%= item.price %></div>
+    <div class="cart-control">
+      <%= button_tag t('.add_to_cart'), type: :button, data: { url: shop_cart_item_path(item) } %>
+    </div>
   </div>
 </div>

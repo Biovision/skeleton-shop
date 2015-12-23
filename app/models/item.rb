@@ -33,4 +33,8 @@ class Item < ActiveRecord::Base
   def category_ids=(category_ids)
     self.categories = Category.where id: category_ids
   end
+
+  def brand_name
+    self.brand_id.nil? ? '' : self.brand.name
+  end
 end
