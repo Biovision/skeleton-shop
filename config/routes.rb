@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :categories, only: [:index, :show]
+    resources :items, only: [:index, :show]
   end
 
   # Authentication

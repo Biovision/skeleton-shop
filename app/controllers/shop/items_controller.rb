@@ -1,7 +1,15 @@
 class Shop::ItemsController < ApplicationController
   include OrderSession
 
-  before_action :set_or_create_order
+  before_action :set_or_create_order, only: [:create, :destroy]
+
+  def index
+    @items = Item.page_for_shop current_page
+  end
+
+  def show
+    @item = Item.find_by! visible: true, slug: params[:id]
+  end
 
   def create
     item = Item.find params[:id].to_s.to_i

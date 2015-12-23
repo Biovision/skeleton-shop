@@ -5,6 +5,6 @@ module CategoriesHelper
   end
 
   def link_to_shop_category(category, text = nil)
-    link_to (text || category.name), shop_category_path(id: category.slug_for_url)
+    link_to (text || category.name), shop_category_path(id: category.slug)
   end
 end

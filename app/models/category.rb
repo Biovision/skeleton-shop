@@ -41,7 +41,7 @@ class Category < ActiveRecord::Base
   end
 
   def page_of_items(page)
-    self.items.visible.ordered_by_name.page(page).per(12)
+    self.items.visible.ordered_by_name.page(page).per(Item::PER_PAGE_SHOP)
   end
 
   private

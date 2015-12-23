@@ -76,4 +76,31 @@ RSpec.describe Shop::ItemsController, type: :controller do
       it_behaves_like 'redirect_to_item'
     end
   end
+
+  describe 'get index' do
+    let!(:hidden_item) { create :item, visible: false }
+    let!(:item_without_price) { create :item }
+
+    before(:each) { get :index }
+
+    it 'assigns visible items to @items' do
+      expect(assigns[:items]).to include(item)
+    end
+
+    it 'does not assign hidden items to @items' do
+      expect(assigns[:items]).not_to include(hidden_item)
+    end
+
+    it 'does not assign items without price to @items' do
+      expect(assigns[:items]).not_to include(item_without_price)
+    end
+  end
+
+  describe 'get show' do
+    before(:each) { get :show, id: item.slug }
+
+    it 'assigns item to @item' do
+      expect(assigns[:item]).to eq(item)
+    end
+  end
 end
