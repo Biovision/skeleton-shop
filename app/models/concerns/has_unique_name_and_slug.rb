@@ -11,4 +11,9 @@ module HasUniqueNameAndSlug
 
   module ClassMethods
   end
+
+  def slug_for_url
+    lowered = slug.mb_chars.downcase.to_s.squish
+    lowered.gsub(/[^a-zа-я0-9ё]/, '-').gsub(/-\z/, '')
+  end
 end

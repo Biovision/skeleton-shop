@@ -1,6 +1,7 @@
 div.categories {
   outline: solid silver 1px;
   width: 15rem;
+  overflow: hidden;
 
   nav {
     .header {
@@ -29,6 +30,85 @@ div.categories {
         overflow: hidden;
         text-overflow: ellipsis;
       }
+    }
+  }
+}
+
+.shop-categories {
+  > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 50%;
+    }
+  }
+}
+
+.category-preview {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.3125rem;
+  background: #f7f7f7;
+
+  > .list {
+    order: 1;
+    width: 66%;
+
+    .current {
+      font-size: 1.25rem;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+    }
+
+    ul {
+      margin: 0.5rem 0 0 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin: 0 0 0 0.5rem;
+        padding: 0;
+      }
+    }
+  }
+
+  > .image {
+    order: 2;
+    width: 34%;
+
+    img {
+      width: 100%;
+      max-width: 10rem;
+    }
+  }
+}
+
+@media screen and(max-width: 690px) {
+  .shop-categories > ul > li {
+    width: 100%;
+  }
+
+  .category-preview {
+    flex-wrap: wrap;
+
+    > .list {
+      order: 2;
+      width: 100%;
+    }
+
+    > .image {
+      order: 1;
+      width: 100%;
+      text-align: center;
     }
   }
 }

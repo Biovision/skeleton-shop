@@ -1,0 +1,7 @@
+<% if subcategories.any? %>
+    <ul>
+      <% subcategories.each do |subcategory| %>
+          <li><%= link_to_shop_category subcategory %></li>
+      <% end %>
+    </ul>
+<% end %>

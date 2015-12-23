@@ -79,3 +79,7 @@ ru:
   admin:
     index:
       title: "Администрирование"
+  shop:
+    categories:
+      index:
+        title: "Категории товаров"

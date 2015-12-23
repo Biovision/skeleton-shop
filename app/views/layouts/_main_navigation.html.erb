@@ -1,6 +1,7 @@
 <nav class="main">
   <ul>
     <li>About</li>
+    <li><%= link_to t('shop.categories.index.title'), shop_categories_path %></li>
     <% if current_user.is_a? User %>
         <% if current_user_has_role? :administrator %>
             <li><%= link_to t('admin.index.title'), admin_path %></li>

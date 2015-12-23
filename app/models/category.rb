@@ -36,6 +36,10 @@ class Category < ActiveRecord::Base
     self.items.include? item
   end
 
+  def subcategories
+    self.categories.visible.ordered_by_priority
+  end
+
   private
 
   def set_next_priority

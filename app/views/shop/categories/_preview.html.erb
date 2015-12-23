@@ -1,0 +1,9 @@
+<div class="category-preview">
+  <div class="list">
+    <div class="current"><%= link_to_shop_category category %></div>
+    <%= render partial: 'shop/categories/subcategories', locals: { subcategories: category.subcategories } %>
+  </div>
+  <div class="image">
+    <%= link_to_shop_category category, image_tag(category.image.preview.url, alt: category.name) %>
+  </div>
+</div>
