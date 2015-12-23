@@ -34,19 +34,17 @@ div.categories {
   }
 }
 
-.shop-categories {
-  > ul {
+ul.categories-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-
-    > li {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 50%;
-    }
+    width: 50%;
   }
 }
 
@@ -93,7 +91,7 @@ div.categories {
 }
 
 @media screen and(max-width: 690px) {
-  .shop-categories > ul > li {
+  ul.categories-list > li {
     width: 100%;
   }
 

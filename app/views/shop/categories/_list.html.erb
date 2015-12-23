@@ -1,9 +1,7 @@
 <% if categories.any? %>
-    <ul>
+    <ul class="categories-list">
       <% categories.each do |category| %>
           <li><%= render partial: 'shop/categories/preview', locals: { category: category } %></li>
       <% end %>
     </ul>
-<% else %>
-    <%= render 'shared/nothing_found' %>
 <% end %>
