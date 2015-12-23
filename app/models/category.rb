@@ -40,6 +40,10 @@ class Category < ActiveRecord::Base
     self.categories.visible.ordered_by_priority
   end
 
+  def page_of_items(page)
+    self.items.visible.ordered_by_name.page(page).per(12)
+  end
+
   private
 
   def set_next_priority

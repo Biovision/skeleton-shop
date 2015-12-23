@@ -1,0 +1,9 @@
+<% if items.any? %>
+    <%= paginate items %>
+    <ul class="items-list">
+      <% items.each do |item| %>
+          <li><%= render partial: 'shop/items/preview', locals: { item: item } %></li>
+      <% end %>
+    </ul>
+    <%= paginate items %>
+<% end %>

@@ -5,4 +5,5 @@
   <%= render partial: 'shop/categories/list', locals: { categories: @category.subcategories } %>
 
   <%= simple_format @category.description %>
+  <%= render partial: 'shop/items/list', locals: { items: @category.page_of_items(current_page) } %>
 </article>

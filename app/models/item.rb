@@ -13,6 +13,8 @@ class Item < ActiveRecord::Base
 
   PER_PAGE = 25
 
+  scope :visible, -> (visible = true) { where visible: true unless visible.nil? }
+
   def self.page_for_administrator(page)
     ordered_by_name.page(page).per(PER_PAGE)
   end
