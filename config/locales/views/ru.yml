@@ -94,3 +94,7 @@ ru:
     carts:
       cart:
         view_cart: "Посмотреть корзину"
+      show:
+        title: "Ваша корзина"
+        items: "Товары"
+        empty: "В корзине пусто"

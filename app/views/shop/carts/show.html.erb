@@ -1,0 +1,20 @@
+<% content_for :meta_title, t('.title') %>
+
+<article class="shop-cart">
+  <h1><%= t('.title') %></h1>
+
+  <% if @order.item_count > 0 %>
+      <section>
+        <h1><%= t('.items') %></h1>
+
+        <%= render partial: 'shop/carts/items', locals: { order_items: @order.order_items } %>
+
+        <div class="total">
+          <span class="item_count"><%= t(:item, count: @order.item_count) %></span>,
+          <span class="price"><%= @order.price %></span>
+        </div>
+      </section>
+  <% else %>
+      <div class="warning"><%= t('.empty') %></div>
+  <% end %>
+</article>

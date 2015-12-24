@@ -1,0 +1,19 @@
+<ul class="items">
+  <% order_items.each do |order_item| %>
+  <li>
+    <div class="image"><%= image_tag(order_item.item.image.preview.url, alt: order_item.item.name) %></div>
+    <div class="details">
+      <span class="brand"><%= order_item.item.brand_name %></span>
+      <span class="name"><%= order_item.item.name %></span>
+    </div>
+    <div class="price">
+      <div class="value"><%= order_item.price %></div>
+      <div class="quantity-manager" data-uri="<%= shop_cart_item_path(order_item.item, format: :json) %>">
+        <span class="decrement">&minus;</span>
+        <span class="count"><%= order_item.quantity %></span>
+        <span class="increment">&plus;</span>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

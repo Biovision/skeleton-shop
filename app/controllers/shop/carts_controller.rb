@@ -3,14 +3,17 @@ class Shop::CartsController < ApplicationController
 
   before_action :set_order
 
+  # get /shop/cart
   def show
     create_order unless @order.is_a? Order
   end
 
+  # get /shop/cart/edit
   def edit
     create_order unless @order.is_a? Order
   end
 
+  # patch /shop/cart
   def update
     if @order.is_a? Order
       place_order
@@ -20,6 +23,7 @@ class Shop::CartsController < ApplicationController
     end
   end
 
+  # delete /shop/cart
   def destroy
     if @order.is_a? Order
       @order.update state: Order.states[:rejected]

@@ -23,3 +23,87 @@ div#cart {
 
   }
 }
+
+.shop-cart {
+  ul.items {
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0.25rem 0;
+      padding: 0.25rem;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #F7F7F7;
+
+      .image {
+        height: 5rem;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .details {
+        .name:before {
+          content: '«';
+        }
+
+        .name:after {
+          content: '»';
+        }
+      }
+
+      .price {
+        .value {
+          text-align: right;
+          height: 1.5rem;
+          font-size: 1.25rem;
+          font-weight: bold;
+
+          &:after {
+            content: ' ₽';
+          }
+        }
+
+        .quantity-manager {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+
+          > span {
+            padding: 0 0.5rem;
+            margin: 0 0.25rem;
+            line-height: 1.5rem;
+            font-weight: bold;
+          }
+
+          .decrement {
+            border-radius: 0.5rem;
+            cursor: pointer;
+            background: #fff0f0;
+            color: #800000;
+          }
+
+          .increment {
+            border-radius: 0.5rem;
+            cursor: pointer;
+            background: #f0fff0;
+            color: #008000;
+          }
+        }
+      }
+    }
+  }
+
+  .total {
+    border-top: solid #f0f0f0 0.0625rem;
+
+    .price:after {
+      content: ' ₽';
+    }
+  }
+}

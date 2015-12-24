@@ -1,6 +1,6 @@
 <div id="cart">
   <div class="icon">
-    <%= link_to image_tag('icons/cart-64.png', alt: t('.view_cart')), shop_cart_path %>
+    <%= link_to image_tag('icons/cart-64.png', alt: t('.view_cart')), shop_cart_path, title: t('.view_cart') %>
   </div>
   <div class="info">
     <% order = Order.from_session session[:order_id] %>
