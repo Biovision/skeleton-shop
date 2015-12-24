@@ -36,6 +36,11 @@ $(document).ready ->
           change_item_count counter, 1
 
   $('div.quantity-manager > .decrement').on 'click', ->
-    url = $(this).parent().data 'url'
+    url = $(this).data 'url'
     counter = $(this).parent().find '.count'
-    change_item_count counter, -1
+    $.ajax url,
+      method: 'DELETE',
+      success: (data) ->
+        if data['order']
+          update_cart_data data['order']
+          change_item_count counter, -1
