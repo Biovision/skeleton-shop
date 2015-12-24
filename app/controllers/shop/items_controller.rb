@@ -11,16 +11,24 @@ class Shop::ItemsController < ApplicationController
     @item = Item.find_by! visible: true, slug: params[:id]
   end
 
+  # post /cart/items
   def create
     item = Item.find params[:id].to_s.to_i
     @order.add_item item, quantity
-    redirect_to item
+    respond_to do |format|
+      format.any(:json, :js) { render json: { order: { price: @order.price, item_count: @order.item_count } } }
+      format.html { redirect_to item }
+    end
   end
 
+  # delete /cart/item/:id
   def destroy
     item = Item.find params[:id].to_s.to_i
     @order.remove_item item
-    redirect_to item
+    respond_to do |format|
+      format.any(:json, :js) { render json: { order: { price: @order.price, item_count: @order.item_count } } }
+      format.html { redirect_to item }
+    end
   end
 
   private

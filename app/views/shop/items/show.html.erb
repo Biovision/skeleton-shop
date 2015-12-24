@@ -14,7 +14,7 @@
       <% end %>
       <div class="price"><%= t('activerecord.attributes.item.price') %>: <span><%= @item.price %></span></div>
       <div class="cart-control">
-        <%= button_tag t('.add_to_cart'), type: :button, data: { url: shop_cart_item_path(@item) } %>
+        <%= button_tag t('.add_to_cart'), type: :button, data: { url: shop_cart_items_path(format: :json), id: @item.id } %>
       </div>
       <div class="item-categories">
         <div><%= t('items.form.categories') %></div>
