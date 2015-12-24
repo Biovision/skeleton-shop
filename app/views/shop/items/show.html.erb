@@ -1,0 +1,35 @@
+<% content_for :meta_title, @item.name %>
+
+<article class="shop-item">
+  <h1><%= @item.name %></h1>
+  <div class="main-data">
+    <figure>
+      <%= image_tag(@item.image.medium.url, alt: @item.name) %>
+    </figure>
+    <div>
+      <% unless @item.brand_id.nil? %>
+          <div class="brand">
+            <%= t('activerecord.attributes.item.brand_id') %>: <span><%= @item.brand_name %></span>
+          </div>
+      <% end %>
+      <div class="price"><%= t('activerecord.attributes.item.price') %>: <span><%= @item.price %></span></div>
+      <div class="cart-control">
+        <%= button_tag t('.add_to_cart'), type: :button, data: { url: shop_cart_item_path(@item) } %>
+      </div>
+      <div class="item-categories">
+        <div><%= t('items.form.categories') %></div>
+        <ul>
+          <% @item.categories.visible.each do |category| %>
+              <li><%= link_to_shop_category category %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% unless @item.description.blank? %>
+      <section class="description">
+        <h1><%= t('activerecord.attributes.item.description') %></h1>
+        <%= simple_format @item.description %>
+      </section>
+  <% end %>
+</article>

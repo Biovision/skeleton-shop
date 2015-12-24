@@ -67,7 +67,6 @@ ul.items-list {
   }
 }
 
-
 @media screen and(max-width: 930px) {
   ul.items-list > li {
     width: 50%;
@@ -80,3 +79,84 @@ ul.items-list {
   }
 }
 
+.shop-item {
+  .main-data {
+    display: flex;
+    flex-wrap: wrap;
+
+    figure {
+      margin: 0 1rem 0 0;
+      padding: 0;
+      width: 40%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    > div {
+      margin: 1rem 0 0 0;
+
+      .brand {
+        font-size: 1.25rem;
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+
+        span {
+          font-weight: bold;
+        }
+      }
+
+      .price {
+        font-size: 1.25rem;
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+
+        span {
+          font-weight: bold;
+          color: #330000;
+
+          &:after {
+            content: ' ₽';
+          }
+        }
+      }
+
+      .cart-control {
+        button {
+          font-size: 1.5rem;
+          line-height: 2rem;
+        }
+      }
+
+      .item-categories {
+        margin: 1rem 0 0 0;
+
+        div {
+          font-size: 1.25rem;
+          font-variant: small-caps;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0 0 0 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .shop-item {
+    .main-data {
+      figure {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}

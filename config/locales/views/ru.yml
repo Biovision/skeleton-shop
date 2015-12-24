@@ -89,3 +89,5 @@ ru:
         header: "Все товары"
       preview:
         add_to_cart: "Добавить в корзину"
+      show:
+        add_to_cart: "В корзину"
