@@ -11,9 +11,11 @@
 
         <div id="cart-total" class="total">
           <span class="item_count"><%= t(:item, count: @order.item_count) %></span>,
-          <span class="price"><%= @order.price %></span>
+          <span class="price currency"><%= @order.price %></span>
         </div>
       </section>
+
+      <p><%= link_to t('.proceed_with_order'), edit_shop_cart_path %>.</p>
   <% else %>
       <div class="warning"><%= t('.empty') %></div>
   <% end %>

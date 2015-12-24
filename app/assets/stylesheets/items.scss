@@ -51,10 +51,6 @@ ul.items-list {
     .price {
       font-weight: bold;
       font-size: 1.5rem;
-
-      &:after {
-        content: ' ₽';
-      }
     }
 
     .cart-control {
@@ -119,10 +115,6 @@ ul.items-list {
         span {
           font-weight: bold;
           color: #330000;
-
-          &:after {
-            content: ' ₽';
-          }
         }
       }
 

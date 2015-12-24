@@ -1,0 +1,35 @@
+<% content_for :meta_title, t('.title') %>
+
+<article class="shop-cart">
+  <h1><%= t('.title') %></h1>
+
+  <%= form_tag shop_cart_path, method: :patch do %>
+      <div class="order-info">
+        №<%= @order.number %>, <span class="currency"><%= @order.price %></span>
+      </div>
+      <div>
+        <%= label_tag :order_name, t('activerecord.attributes.order.name') %><br />
+        <%= text_field_tag 'order[name]', '', required: true, size: 50 %>
+      </div>
+      <div>
+        <%= label_tag :order_phone, t('activerecord.attributes.order.phone') %><br />
+        <%= telephone_field_tag 'order[phone]', '', size: 12 %>
+      </div>
+      <div>
+        <%= label_tag :order_email, t('activerecord.attributes.order.email') %><br />
+        <%= email_field_tag 'order[email]', '', size: 50 %>
+      </div>
+      <div>
+        <%= label_tag :order_address, t('activerecord.attributes.order.address') %><br />
+        <%= text_field_tag 'order[address]', '', size: 50 %>
+      </div>
+      <div>
+        <%= label_tag :order_comment, t('activerecord.attributes.order.comment') %><br />
+        <%= text_area_tag 'order[comment]', '', cols: 50, rows: 5 %>
+      </div>
+
+      <div>
+        <%= button_tag t(:submit), type: :submit %>
+      </div>
+  <% end %>
+</article>

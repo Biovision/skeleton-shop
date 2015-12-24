@@ -16,11 +16,6 @@ div#cart {
   .info {
     line-height: 1.5rem;
     font-size: 1.125rem;
-
-    .price:after {
-      content: ' ₽';
-    }
-
   }
 }
 
@@ -101,9 +96,9 @@ div#cart {
 
   .total {
     border-top: solid #f0f0f0 0.0625rem;
-
-    .price:after {
-      content: ' ₽';
-    }
   }
+}
+
+.order-info {
+  font-size: 1.25rem;
 }
