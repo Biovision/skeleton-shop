@@ -22,3 +22,9 @@ ru:
   "yes": "да"
   "no": "нет"
   view: "В просмотр"
+  item:
+    zero: "%{count} товаров"
+    one: "%{count} товар"
+    few: "%{count} товара"
+    many: "%{count} товаров"
+    other: "%{count} товаров"

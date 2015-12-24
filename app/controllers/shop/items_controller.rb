@@ -16,7 +16,7 @@ class Shop::ItemsController < ApplicationController
     item = Item.find params[:id].to_s.to_i
     @order.add_item item, quantity
     respond_to do |format|
-      format.any(:json, :js) { render json: { order: { price: @order.price, item_count: @order.item_count } } }
+      format.any(:json, :js) { render json: order_data }
       format.html { redirect_to item }
     end
   end
@@ -26,7 +26,7 @@ class Shop::ItemsController < ApplicationController
     item = Item.find params[:id].to_s.to_i
     @order.remove_item item
     respond_to do |format|
-      format.any(:json, :js) { render json: { order: { price: @order.price, item_count: @order.item_count } } }
+      format.any(:json, :js) { render json: order_data }
       format.html { redirect_to item }
     end
   end
@@ -45,5 +45,9 @@ class Shop::ItemsController < ApplicationController
       quantity = params[:quantity].to_s.to_i
       ((1..100) === quantity) ? quantity : 1
     end
+  end
+
+  def order_data
+    { order: { price: @order.price, item_count: t(:item, count: @order.item_count) } }
   end
 end

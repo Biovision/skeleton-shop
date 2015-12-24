@@ -1,3 +1,10 @@
-<div class="cart">
-  Cart
+<div id="cart">
+  <div class="icon">
+    <%= link_to image_tag('icons/cart-64.png', alt: t('.view_cart')), shop_cart_path %>
+  </div>
+  <div class="info">
+    <% order = Order.from_session session[:order_id] %>
+    <div class="item_count"><%= t(:item, count: order.is_a?(Order) ? order.item_count : 0) %></div>
+    <div class="price"><%= order.is_a?(Order) ? order.price : 0 %></div>
+  </div>
 </div>

@@ -13,6 +13,10 @@ class Order < ActiveRecord::Base
     order('id desc').page(page).per(PER_PAGE)
   end
 
+  def self.from_session(order_id)
+    self.find_by id: order_id unless order_id.nil?
+  end
+
   # Add item to order
   #
   # Increments value of quantity in OrderItem for this order.

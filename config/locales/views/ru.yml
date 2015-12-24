@@ -91,3 +91,6 @@ ru:
         add_to_cart: "Добавить в корзину"
       show:
         add_to_cart: "В корзину"
+    carts:
+      cart:
+        view_cart: "Посмотреть корзину"
