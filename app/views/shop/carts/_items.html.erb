@@ -8,10 +8,10 @@
     </div>
     <div class="price">
       <div class="value"><%= order_item.price %></div>
-      <div class="quantity-manager" data-uri="<%= shop_cart_item_path(order_item.item, format: :json) %>">
-        <span class="decrement">&minus;</span>
+      <div class="quantity-manager" data-id="<%= order_item.item_id %>">
+        <span class="decrement" data-url="<%= shop_cart_item_path(order_item.item, format: :json) %>">&minus;</span>
         <span class="count"><%= order_item.quantity %></span>
-        <span class="increment">&plus;</span>
+        <span class="increment" data-url="<%= shop_cart_items_path(format: :json) %>">&plus;</span>
       </div>
     </div>
   </li>

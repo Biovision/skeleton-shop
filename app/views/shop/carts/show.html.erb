@@ -9,7 +9,7 @@
 
         <%= render partial: 'shop/carts/items', locals: { order_items: @order.order_items } %>
 
-        <div class="total">
+        <div id="cart-total" class="total">
           <span class="item_count"><%= t(:item, count: @order.item_count) %></span>,
           <span class="price"><%= @order.price %></span>
         </div>

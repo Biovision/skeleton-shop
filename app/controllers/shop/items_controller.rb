@@ -11,7 +11,7 @@ class Shop::ItemsController < ApplicationController
     @item = Item.find_by! visible: true, slug: params[:id]
   end
 
-  # post /cart/items/:id
+  # post /cart/items
   def create
     item = Item.find params[:id].to_s.to_i
     @order.add_item item, quantity
