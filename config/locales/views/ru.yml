@@ -62,6 +62,8 @@ ru:
       title: "Заказ №%{number}"
       items: "Товары"
       contact: "Контактные данные"
+    edit:
+      title: "Редактирование заказа"
   shared:
     flash_messages:
       notice: "Замечание"
