@@ -1,9 +1,9 @@
 <% if collection.any? %>
     <ul>
       <% collection.each do |entity| %>
-      <li><%= link_to entity.name, entity %></li>
+      <li><%= link_to entity.name || entity.id, entity %></li>
       <% end %>
     </ul>
 <% else %>
-    <div class="warning" title="<%= t('flash_messages.warning') %>"><%= t(:nothing_found) %></div>
+    <div class="warning" title="<%= t('shared.flash_messages.warning') %>"><%= t(:nothing_found) %></div>
 <% end %>

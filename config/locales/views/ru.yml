@@ -58,6 +58,10 @@ ru:
     index:
       title: "Заказы, страница %{page}"
       header: "Заказы"
+    show:
+      title: "Заказ №%{number}"
+      items: "Товары"
+      contact: "Контактные данные"
   shared:
     flash_messages:
       notice: "Замечание"
